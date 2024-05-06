@@ -19,5 +19,12 @@
         android:id="@+id/attractionDetailFragments"
         android:name="com.example.travelapp.ui.fragments.AttractionDetailFragment"
         android:label="AttractionDetailFragments"
-        tools:layout="@layout/fragment_attraction_detail"/>
+        tools:layout="@layout/fragment_attraction_detail">
+        <argument
+            android:name="isFavoritre"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+
+
+    </fragment>
 </navigation>
