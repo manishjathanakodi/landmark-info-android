@@ -1,12 +1,11 @@
-package com.example.travelapp.ui.fragments
+package com.example.travelapp.ui.fragments.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.travelapp.R
 import com.example.travelapp.databinding.FragmentHomeBinding
+import com.example.travelapp.ui.fragments.BaseFragment
 
 class HomeFragment: BaseFragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -23,6 +22,13 @@ class HomeFragment: BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val rv = binding.homeRv
+        val homeAdapter = HomeFragmentAdapter { attractionId ->
+            val navDirections = HomeFragmentDirections.actionHomeFragmentToAttractionDetailFragments(attractionId)
+            navController.navigate(navDirections)
+
+        }
+        rv.adapter = homeAdapter
+        homeAdapter.setData(attractions)
     }
 
     override fun onDestroyView() {
